@@ -65,8 +65,8 @@ use serde::ser::Serialize;
 
 use error::EsError;
 
-use url::Url;
 use std::time;
+use url::Url;
 
 pub trait EsResponse {
     fn status_code(&self) -> &StatusCode;
@@ -325,9 +325,6 @@ pub mod tests {
     }
 
     pub fn clean_db(mut client: &mut Client, test_idx: &str) {
-        // let's do some logging
-        let _ = env_logger::init();
-
         let scroll = Duration::minutes(1);
         let mut scan: ScanResult<Value> = match client
             .search_query()
